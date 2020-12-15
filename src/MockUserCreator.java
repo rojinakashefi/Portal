@@ -15,4 +15,15 @@ public class MockUserCreator {
         }
         return false;
     }
+    public static User getUser(String username, String password) {
+        if (username.equalsIgnoreCase(AdminUserSample.getUsername())) {
+            return AdminUserSample;
+        } else if (username.equalsIgnoreCase(StudentUserSample.getUsername())) {
+            return StudentUserSample;
+        } else if (username.equalsIgnoreCase(ProfessorUserSample.getUsername())) {
+            return ProfessorUserSample;
+        }
+        return null;
+    }
+
 }
