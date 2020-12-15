@@ -49,4 +49,5 @@ public class LoginForm extends JFrame implements ActionListener {
             message.setText(" Invalid user.. ");
         }
     }
+
 }
