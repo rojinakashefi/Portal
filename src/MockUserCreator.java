@@ -5,4 +5,14 @@ public class MockUserCreator {
 
     MockUserCreator() {
     }
+    public static boolean isLogin(String username, String password) {
+        if (username.equalsIgnoreCase(AdminUserSample.getUsername())) {
+            return password.equals(AdminUserSample.getPassword());
+        } else if (username.equalsIgnoreCase(StudentUserSample.getUsername())) {
+            return password.equals(StudentUserSample.getPassword());
+        } else if (username.equalsIgnoreCase(ProfessorUserSample.getUsername())) {
+            return password.equals(ProfessorUserSample.getPassword());
+        }
+        return false;
+    }
 }
