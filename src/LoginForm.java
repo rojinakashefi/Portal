@@ -39,15 +39,39 @@ public class LoginForm extends JFrame implements ActionListener {
         setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         setVisible(true);
     }
-    @Override
     public void actionPerformed(ActionEvent ae) {
-        String userName = userNameText.getText();
-        String password = passwordText.getText();
-        if (userName.trim().equals("admin") && password.trim().equals("admin")) {
-            message.setText(" Hello " + userName + "");
-        } else {
-            message.setText(" Invalid user.. ");
-        }
+        Menu menu = showMenuByUserRole();
     }
 
+    private Menu showMenuByUserRole() {
+        try {
+            String userName = userNameText.getText();
+            String password = passwordText.getText();
+            if (MockUserCreator.isLogin(userName, password)) {
+                User user = MockUserCreator.getUser(userName, password);
+                Menu menu = null;
+                if (user.getUserRole() == UserRole.Admin) {
+                    //menu = new AdminMenu();
+                    dispose();
+                } else if (user.getUserRole() == UserRole.Professor) {
+                    //menu = new ProfessorMenu();
+                    dispose();
+                } else if (user.getUserRole() == UserRole.Student) {
+                    //menu = new StudentMenu();
+                    dispose();
+                }
+                return menu;
+            } else {
+                JOptionPane.showMessageDialog(this, "username or password is incorrect");
+            }
+        } catch (Exception ex) {
+            System.err.println(ex.getStackTrace());
+        }
+        return null;
+    }
+
+    private boolean isLogin(String userName, String password) {
+        return userName.trim().equals("admin") && password.trim().equals("admin");
+    }
+}
 }
