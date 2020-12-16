@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class ChangePasswordForm extends JFrame {
+public class ChangePasswordForm extends JFrame  {
     private JPanel panel;
     private JLabel userLabel, PassLabel, confirmPassLabel, message;
     private JTextField userNameText;
@@ -12,8 +12,10 @@ public class ChangePasswordForm extends JFrame {
 
     private JButton applyBtn, cancelBtn;
     private String currentUsername;
+    private IUserService userService;
 
     ChangePasswordForm(String username) {
+        userService = new UserService();
         userLabel = new JLabel();
         userLabel.setText(" Old Username ");
         userNameText = new JTextField(username);
@@ -52,5 +54,4 @@ public class ChangePasswordForm extends JFrame {
         setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         setVisible(true);
     }
-
 }

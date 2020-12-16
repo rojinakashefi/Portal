@@ -9,6 +9,7 @@ public abstract class Menu extends JFrame implements ActionListener{
     JButton changeUsernameBtn;
     JButton changePasswordBtn;
     JButton signOutBtn;
+    protected String username;
 
     Menu(String Username,String title){
         changeUsernameBtn = new JButton(" Edit Username ");
@@ -32,5 +33,11 @@ public abstract class Menu extends JFrame implements ActionListener{
         setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         setVisible(true);
     }
+    public String getUsername() {
+        return this.username;
+    }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

@@ -9,6 +9,7 @@ public class LoginForm extends JFrame implements ActionListener {
     JTextField userNameText;
     JPasswordField passwordText;
     JButton login, cancel;
+
     LoginForm() {
         userLabel = new JLabel();
         userLabel.setText(" Username ");
@@ -19,7 +20,6 @@ public class LoginForm extends JFrame implements ActionListener {
         passwordText = new JPasswordField();
         passwordText.setHorizontalAlignment(SwingConstants.CENTER);
         login = new JButton(" Login ");
-        login.addActionListener(this);
         GridLayout gridLayout = new GridLayout(3, 2);
         gridLayout.setVgap(10);
         panel = new JPanel(gridLayout);
@@ -32,13 +32,16 @@ public class LoginForm extends JFrame implements ActionListener {
         panel.add(message);
         panel.add(login);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        login.addActionListener(this);
         add(panel, BorderLayout.CENTER);
         setTitle("LOGIN");
-        setSize(450,200);
+        setSize(450, 200);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         setVisible(true);
     }
+
+    @Override
     public void actionPerformed(ActionEvent ae) {
         Menu menu = showMenuByUserRole();
     }
@@ -51,13 +54,13 @@ public class LoginForm extends JFrame implements ActionListener {
                 User user = MockUserCreator.getUser(userName, password);
                 Menu menu = null;
                 if (user.getUserRole() == UserRole.Admin) {
-                    menu = new AdminMenu();
+                    menu = new AdminMenu(userName);
                     dispose();
                 } else if (user.getUserRole() == UserRole.Professor) {
-                    menu = new ProfessorMenu();
+                    menu = new ProfessorMenu(userName);
                     dispose();
                 } else if (user.getUserRole() == UserRole.Student) {
-                    menu = new StudentMenu();
+                    menu = new StudentMenu(userName);
                     dispose();
                 }
                 return menu;

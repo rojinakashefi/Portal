@@ -10,8 +10,10 @@ public class ChangeUsernameForm extends JFrame {
     private JTextField newUsernameText;
     private JButton applyBtn, cancelBtn;
     private String currentUsername;
+    private IUserService userService;
 
     ChangeUsernameForm(String username) {
+        userService = new UserService();
         userLabel = new JLabel();
         userLabel.setText(" Old Username ");
         userNameText = new JTextField(username);
@@ -44,5 +46,4 @@ public class ChangeUsernameForm extends JFrame {
         setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         setVisible(true);
     }
-
 }
