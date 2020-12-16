@@ -74,4 +74,3 @@ public class LoginForm extends JFrame implements ActionListener {
         return userName.trim().equals("admin") && password.trim().equals("admin");
     }
 }
-}

@@ -10,7 +10,7 @@ public abstract class Menu extends JFrame implements ActionListener{
     JButton changePasswordBtn;
     JButton signOutBtn;
 
-    Menu(String title){
+    Menu(String Username,String title){
         changeUsernameBtn = new JButton(" Edit Username ");
         changePasswordBtn = new JButton(" Edit Password ");
         signOutBtn = new JButton(" Sign Out ");
