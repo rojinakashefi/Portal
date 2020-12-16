@@ -51,13 +51,13 @@ public class LoginForm extends JFrame implements ActionListener {
                 User user = MockUserCreator.getUser(userName, password);
                 Menu menu = null;
                 if (user.getUserRole() == UserRole.Admin) {
-                    //menu = new AdminMenu();
+                    menu = new AdminMenu();
                     dispose();
                 } else if (user.getUserRole() == UserRole.Professor) {
-                    //menu = new ProfessorMenu();
+                    menu = new ProfessorMenu();
                     dispose();
                 } else if (user.getUserRole() == UserRole.Student) {
-                    //menu = new StudentMenu();
+                    menu = new StudentMenu();
                     dispose();
                 }
                 return menu;

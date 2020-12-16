@@ -12,9 +12,9 @@ public class ProfessorMenu extends Menu{
             new LoginForm();
             dispose();
         } else if (e.getSource() == changeUsernameBtn) {
-           // new ChangeUsernameForm(getUsername());
+            new ChangeUsernameForm(getUsername());
         } else if (e.getSource() == changePasswordBtn) {
-           // new ChangePasswordForm(getUsername());
+            new ChangePasswordForm(getUsername());
         }
     }
 }
