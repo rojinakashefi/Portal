@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class ChangePasswordForm extends JFrame  {
+public class ChangePasswordForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel userLabel, PassLabel, confirmPassLabel, message;
     private JTextField userNameText;
@@ -47,6 +47,8 @@ public class ChangePasswordForm extends JFrame  {
         panel.add(new JLabel());
         panel.add(cancelBtn);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        applyBtn.addActionListener(this);
+        cancelBtn.addActionListener(this);
         add(panel, BorderLayout.CENTER);
         setTitle("CHANGE USERNAME");
         setSize(450, 200);
@@ -54,4 +56,26 @@ public class ChangePasswordForm extends JFrame  {
         setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         setVisible(true);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == applyBtn) {
+            String pass = newPassword.getText().trim();
+            String confirm = confirmPassword.getText().trim();
+            boolean isConfirm = pass.equalsIgnoreCase(confirm);
+            if (isConfirm) {
+                boolean isChanged = userService.changePassword(currentUsername, newPassword.getText().trim());
+                if (isChanged) {
+                    JOptionPane.showMessageDialog(this, "password is successfully changed");
+                } else {
+                    JOptionPane.showMessageDialog(this, "password is not changed, please try again");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "confirm password is incorrect");
+            }
+        } else if (ae.getSource() == cancelBtn) {
+            dispose();
+        }
+    }
+
 }
