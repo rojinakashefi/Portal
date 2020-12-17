@@ -3,8 +3,8 @@ import java.awt.event.ActionEvent;
 public class AdminMenu extends Menu {
 
     AdminMenu(String username) {
-        super(username, "Admin Menu");
-    }
+        super(username, "Admin Menu", 6, 350);
+     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
