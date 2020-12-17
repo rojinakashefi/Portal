@@ -34,7 +34,7 @@ public class ProfessorMenu extends Menu {
         } else if (e.getSource() == changePasswordBtn) {
             new ChangePasswordForm(getUsername());
         } else if (e.getSource() == addClassTimeBtn) {
-            //new AddClassTimeForm();
+            new AddClassTimeForm();
         } else if (e.getSource() == allStudentsBtn) {
            //new AllStudentsForm();
         } else if (e.getSource() == classStudentsInfoBtn) {
