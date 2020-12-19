@@ -50,8 +50,8 @@ public class LoginForm extends JFrame implements ActionListener {
         try {
             String userName = userNameText.getText();
             String password = passwordText.getText();
-            if (MockUserCreator.isLogin(userName, password)) {
-                User user = MockUserCreator.getUser(userName, password);
+            if (isLogin(userName, password)) {
+                User user = getUser(userName, password);
                 Menu menu = null;
                 if (user.getUserRole() == UserRole.Admin) {
                     menu = new AdminMenu(userName);
@@ -73,7 +73,31 @@ public class LoginForm extends JFrame implements ActionListener {
         return null;
     }
 
-    private boolean isLogin(String userName, String password) {
-        return userName.trim().equals("admin") && password.trim().equals("admin");
+
+    private User getUser(String username, String password) {
+        if (username.equalsIgnoreCase(AdminUserSample.getUsername())) {
+            return AdminUserSample;
+        } else if (username.equalsIgnoreCase(StudentUserSample.getUsername())) {
+            return StudentUserSample;
+        } else if (username.equalsIgnoreCase(ProfessorUserSample.getUsername())) {
+            return ProfessorUserSample;
+        }
+        return null;
     }
+
+    public boolean isLogin(String username, String password) {
+        if (username.equalsIgnoreCase(AdminUserSample.getUsername())) {
+            return password.equals(AdminUserSample.getPassword());
+        } else if (username.equalsIgnoreCase(StudentUserSample.getUsername())) {
+            return password.equals(StudentUserSample.getPassword());
+        } else if (username.equalsIgnoreCase(ProfessorUserSample.getUsername())) {
+            return password.equals(ProfessorUserSample.getPassword());
+        }
+        return false;
+    }
+
+    public User AdminUserSample = new User(1, "admin", "admin", UserRole.Admin);
+    public User ProfessorUserSample = new User(2, "prof", "prof", UserRole.Professor);
+    public User StudentUserSample = new User(3, "std", "std", UserRole.Student);
+
 }

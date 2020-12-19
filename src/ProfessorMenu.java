@@ -36,11 +36,11 @@ public class ProfessorMenu extends Menu {
         } else if (e.getSource() == addClassTimeBtn) {
             new AddClassTimeForm();
         } else if (e.getSource() == allStudentsBtn) {
-           //new AllStudentsForm();
+            new AllStudentsForm();
         } else if (e.getSource() == classStudentsInfoBtn) {
-            //new ClassStudentsInfo();
+            new ClassStudentsInfo();
         } else if (e.getSource() == gradinBtn) {
-            //new GradingForm();
+            new GradingForm();
         }
     }
 }
