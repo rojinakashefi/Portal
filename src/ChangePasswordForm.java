@@ -16,6 +16,8 @@ public class ChangePasswordForm extends JFrame implements ActionListener {
 
     ChangePasswordForm(String username) {
         userService = new UserService();
+
+        
         userLabel = new JLabel();
         userLabel.setText(" Old Username ");
         userNameText = new JTextField(username);
