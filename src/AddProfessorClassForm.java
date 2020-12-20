@@ -13,6 +13,7 @@ public class AddProfessorClassForm extends JFrame implements ActionListener {
     private IProfessorService professorService;
 
     AddProfessorClassForm() {
+
         professorService = new ProfessorService();
         label = new JLabel();
         label.setText(" Teacher Name ");
