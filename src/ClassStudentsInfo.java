@@ -13,6 +13,7 @@ public class ClassStudentsInfo extends JFrame implements ActionListener {
     private JButton cancelBtn;
 
     ClassStudentsInfo() {
+
         GridLayout gridLayout = new GridLayout(1,2);
         gridLayout.setVgap(10);
         label = new JLabel();
