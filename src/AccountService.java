@@ -39,7 +39,6 @@ public class AccountService implements IAccountService {
             out.writeObject(StudentUserSample);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in /tmp/employee.ser");
         } catch (IOException ex) {
             ex.printStackTrace();
         }

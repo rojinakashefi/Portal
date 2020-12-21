@@ -8,7 +8,6 @@ public class AdminMenu extends Menu {
 
     AdminMenu(String username) {
         super(username, "Admin Menu", 6, 350);
-        
         weeklyMealBtn = new JButton(" Weekly Meal Plan ");
         addProfessorBtn = new JButton(" Add Professor ");
         professorInfoBtn = new JButton(" Professor Info ");
