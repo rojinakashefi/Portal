@@ -10,10 +10,10 @@ public class AddProfessorClassForm extends JFrame implements ActionListener {
     private JTextField teacherNameTxt;
     private JTextField teacherCourseNameTxt;
     private JButton applyBtn, cancelBtn;
-    private IProfessorService professorService;
+    private ICourseService courseService;
 
     AddProfessorClassForm() {
-        professorService = new ProfessorService();
+        courseService = new CourseService();
         label = new JLabel();
         label.setText(" Teacher Name ");
         teacherNameTxt = new JTextField();
@@ -49,10 +49,24 @@ public class AddProfessorClassForm extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == applyBtn){
-        }else if (ae.getSource() == cancelBtn){
+        String courseName = teacherCourseNameTxt.getText().trim();
+        String teacherName = teacherNameTxt.getText().trim();
+        if (ae.getSource() == applyBtn) {
+            if (courseName == null || teacherName == null || courseName.length() <= 0 || teacherName.length() <= 0) {
+                JOptionPane.showMessageDialog(this, "Please fill input fields");
+            } else {
+                Course course = new Course(courseName, teacherName);
+                courseService.addCourse(course);
+                teacherCourseNameTxt.setText("");
+                teacherNameTxt.setText("");
+                courseService.printCourses();
+                JOptionPane.showMessageDialog(this, "Course is successfully added");
+            }
+        } else if (ae.getSource() == cancelBtn) {
             dispose();
         }
+
+
     }
 
 }

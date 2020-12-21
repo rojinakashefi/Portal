@@ -9,13 +9,12 @@ public class ChangePasswordForm extends JFrame implements ActionListener {
     private JTextField userNameText;
     private JPasswordField newPassword;
     private JPasswordField confirmPassword;
-
     private JButton applyBtn, cancelBtn;
     private String currentUsername;
-    private IUserService userService;
+    private IAccountService accountService;
 
     ChangePasswordForm(String username) {
-        userService = new UserService();
+        accountService = new AccountService();
         userLabel = new JLabel();
         userLabel.setText(" Old Username ");
         userNameText = new JTextField(username);
@@ -64,9 +63,10 @@ public class ChangePasswordForm extends JFrame implements ActionListener {
             String confirm = confirmPassword.getText().trim();
             boolean isConfirm = pass.equalsIgnoreCase(confirm);
             if (isConfirm) {
-                boolean isChanged = userService.changePassword(currentUsername, newPassword.getText().trim());
+                boolean isChanged = accountService.changePassword(currentUsername, newPassword.getText().trim());
                 if (isChanged) {
                     JOptionPane.showMessageDialog(this, "password is successfully changed");
+                    dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "password is not changed, please try again");
                 }

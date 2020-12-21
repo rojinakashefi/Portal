@@ -9,16 +9,17 @@ public class ChangeUsernameForm extends JFrame implements ActionListener {
     private JTextField userNameText;
     private JTextField newUsernameText;
     private JButton applyBtn, cancelBtn;
-    private String currentUsername;
-    private IUserService userService;
+    private String oldUsername;
+    private String newUsername;
+    private IAccountService accountService;
 
     ChangeUsernameForm(String username) {
-        userService = new UserService();
+        accountService = new AccountService();
         userLabel = new JLabel();
         userLabel.setText(" Old Username ");
         userNameText = new JTextField(username);
         userNameText.setEditable(false);
-        currentUsername = username;
+        oldUsername = username;
         userNameText.setHorizontalAlignment(SwingConstants.CENTER);
         PassLabel = new JLabel();
         PassLabel.setText(" New Username ");
@@ -51,14 +52,16 @@ public class ChangeUsernameForm extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == applyBtn){
-            boolean isChanged = userService.changeUsername(currentUsername);
-            if (isChanged){
-                JOptionPane.showMessageDialog(this,"username is successfully changed");
-            }else{
-                JOptionPane.showMessageDialog(this,"username is not changed, please try again");
+        if (ae.getSource() == applyBtn) {
+            newUsername = newUsernameText.getText().trim();
+            boolean isChanged = accountService.changeUsername(oldUsername, newUsername);
+            if (isChanged) {
+                JOptionPane.showMessageDialog(this, "username is successfully changed, Please sign in again");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "username is not changed, please try again");
             }
-        }else if (ae.getSource() == cancelBtn){
+        } else if (ae.getSource() == cancelBtn) {
             dispose();
         }
     }
