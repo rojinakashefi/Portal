@@ -22,6 +22,14 @@ public class ProfessorService implements IProfessorService {
 
     @Override
     public boolean isConflict(Class cls) {
+        List<Class> classe = getClasses();
+        for (int i = 0; i < classe.size(); i++) {
+            if (classe.get(i).getCourse().getProfessorName().equalsIgnoreCase(cls.getCourse().getProfessorName())
+                    && classe.get(i).getCourse().getCourseName().equalsIgnoreCase(cls.getCourse().getCourseName())
+                    && classe.get(i).getTimeRange() == cls.getTimeRange()) {
+                return true;
+            }
+        }
         return false;
     }
 
