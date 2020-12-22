@@ -21,6 +21,7 @@ public class AddClassTimeForm extends JFrame implements ActionListener {
         classNameLabel = new JLabel();
         classNameLabel.setText(" Course Name ");
         classNameCombo = new JComboBox();
+        setClassNames();
         capacityLabel = new JLabel();
         capacityLabel.setText(" Capacity ");
         capacityText = new JTextField();
@@ -59,12 +60,53 @@ public class AddClassTimeForm extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == applyBtn){
-        }else if (ae.getSource() == cancelBtn){
-            dispose();
+    private void setClassNames() {
+        courses = professorService.getCourses();
+        for (int i = 0; i < courses.size(); i++) {
+            if (courses.get(i).getProfessorName().equalsIgnoreCase(AccountService.CurrentUsername)) {
+                classNameCombo.addItem(courses.get(i).getCourseName());
+            }
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == applyBtn) {
+            String capacity = capacityText.getText().trim();
+            if (capacity == null) {
+                JOptionPane.showMessageDialog(this, "Please fill all input fields");
+            } else {
+                Class cls = new Class();
+                Course crs = getCourse((String) classNameCombo.getSelectedItem());
+                if (crs == null)
+                {
+                    JOptionPane.showMessageDialog(this, "Course is not exit");
+                    return;
+                }
+                cls.setCourse(crs);
+                cls.setTimeRange(timeRangeCombo.getSelectedIndex());
+                if (professorService.isConflict(cls)){
+                    JOptionPane.showMessageDialog(this, "duplicate class");
+                    return;
+                }
+                cls.setCapacity(Integer.parseInt(capacityText.getText().trim()));
+                professorService.addClass(cls);
+                professorService.printClasses();
+                JOptionPane.showMessageDialog(this, "Class is successfully added");
+            }
+        } else if (ae.getSource() == cancelBtn) {
+            dispose();
+        }
+
+    }
+
+
+    private Course getCourse(String name) {
+        for (int i = 0; i < courses.size(); i++) {
+            if (courses.get(i).getCourseName().equalsIgnoreCase(name)) {
+                return courses.get(i);
+            }
+        }
+        return null;
+    }
 }

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountService implements IAccountService {
+    public static String CurrentUsername;
 
     private List<User> getAllUsers() {
         List<User> results = new ArrayList<User>();
@@ -148,6 +149,14 @@ public class AccountService implements IAccountService {
             }
         }
         return isChanged;
+    }
+
+    public String getCurrentUsername() {
+        return CurrentUsername;
+    }
+
+    public void setCurrentUsername(String currentUsername) {
+        CurrentUsername = currentUsername;
     }
 
     public User AdminUserSample = new User(1, "admin", "admin", UserRole.Admin);
