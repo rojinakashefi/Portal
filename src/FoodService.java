@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.List;
 
 public class FoodService implements IFoodService {
 
@@ -17,7 +18,29 @@ public class FoodService implements IFoodService {
     }
 
     @Override
-    public void printFoods() {
+    public Food getFoods() {
+        Food food = null;
+        String fileName = FOOD_FILE_NAME_First;
+        File f = new File(fileName);
+        if (f.exists()) {
+            ObjectInputStream ois = null;
+            try {
+                FileInputStream fis = new FileInputStream(fileName);
+                ois = new ObjectInputStream(fis);
+                food = (Food) ois.readObject();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                //end of file exception -> do nothing
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return food;
+    }
+
+    @Override
+    public void prindFoods() {
         String fileName = FOOD_FILE_NAME_First;
         File f = new File(fileName);
         if (f.exists()) {

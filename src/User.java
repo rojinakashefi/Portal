@@ -1,9 +1,12 @@
+import java.io.Serializable;
+
 enum UserRole{
     Admin,
     Professor,
     Student
 }
-public class User {
+
+public class User implements Serializable {
 
     private long Id;
     private String username;

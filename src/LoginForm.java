@@ -10,8 +10,10 @@ public class LoginForm extends JFrame implements ActionListener {
     JTextField userNameText;
     JPasswordField passwordText;
     JButton login, cancel;
+    IStudentService studentService;
 
     LoginForm() {
+        studentService = new StudentService();
         accountService = new AccountService();
         userLabel = new JLabel();
         userLabel.setText(" Username ");
@@ -55,6 +57,7 @@ public class LoginForm extends JFrame implements ActionListener {
             User user = accountService.getUser(userName, password);
             if (user != null) {
                 Menu menu = null;
+                AccountService.CurrentUsername = user.getUsername();
                 if (user.getUserRole() == UserRole.Admin) {
                     menu = new AdminMenu(userName);
                     dispose();
@@ -62,6 +65,10 @@ public class LoginForm extends JFrame implements ActionListener {
                     menu = new ProfessorMenu(userName);
                     dispose();
                 } else if (user.getUserRole() == UserRole.Student) {
+                    Student student = studentService.getStudent(user.getUsername());
+                    if (student == null) {
+                        studentService.addStudent(new Student(user.getUsername(), 0));
+                    }
                     menu = new StudentMenu(userName);
                     dispose();
                 }

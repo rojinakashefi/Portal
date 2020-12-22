@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 
 public class WeeklyMealPlanFormForStudent extends JFrame implements ActionListener {
     private JPanel panel;
-    private JLabel saturday, sunday,monday,tuesday,wednesday,thursday;
-    private JTextField saturdayPrice, sundayPrice,mondayPrice,tuesdayPrice,wednesdayPrice,thursdayPrice;
+    private JLabel saturday, sunday, monday, tuesday, wednesday, thursday;
+    private JTextField saturdayPrice, sundayPrice, mondayPrice, tuesdayPrice, wednesdayPrice, thursdayPrice;
     private JComboBox satCombo;
     private JComboBox sunCombo;
     private JComboBox monCombo;
@@ -16,20 +16,31 @@ public class WeeklyMealPlanFormForStudent extends JFrame implements ActionListen
     private JComboBox thursCombo;
 
     private JButton applyBtn, cancelBtn;
-    private IMealService mealService;
+    private IFoodService foodService;
+    private IStudentService studentService;
+    private Food food;
 
     WeeklyMealPlanFormForStudent() {
+        foodService = new FoodService();
+        studentService = new StudentService();
+        food = foodService.getFoods();
         saturdayPrice = new JTextField();
+        saturdayPrice.setText(food.getSaturdayday().getPrice());
         saturdayPrice.setEditable(false);
         sundayPrice = new JTextField();
+        sundayPrice.setText(food.getSunday().getPrice());
         sundayPrice.setEditable(false);
         mondayPrice = new JTextField();
+        mondayPrice.setText(food.getMonday().getPrice());
         mondayPrice.setEditable(false);
         tuesdayPrice = new JTextField();
+        tuesdayPrice.setText(food.getTuesday().getPrice());
         tuesdayPrice.setEditable(false);
         wednesdayPrice = new JTextField();
+        wednesdayPrice.setText(food.getWednesday().getPrice());
         wednesdayPrice.setEditable(false);
         thursdayPrice = new JTextField();
+        thursdayPrice.setText(food.getThursday().getPrice());
         thursdayPrice.setEditable(false);
         saturdayPrice.setHorizontalAlignment(SwingConstants.CENTER);
         sundayPrice.setHorizontalAlignment(SwingConstants.CENTER);
@@ -37,30 +48,36 @@ public class WeeklyMealPlanFormForStudent extends JFrame implements ActionListen
         tuesdayPrice.setHorizontalAlignment(SwingConstants.CENTER);
         wednesdayPrice.setHorizontalAlignment(SwingConstants.CENTER);
         thursdayPrice.setHorizontalAlignment(SwingConstants.CENTER);
-        mealService = new MealService();
+        foodService = new FoodService();
         saturday = new JLabel();
         saturday.setText(" Saturday ");
         satCombo = new JComboBox();
+        satCombo.addItem(food.getSaturdayday().getFood());
         satCombo.setEditable(false);
         sunday = new JLabel();
         sunday.setText(" Sunday ");
         sunCombo = new JComboBox();
+        sunCombo.addItem(food.getSunday().getFood());
         sunCombo.setEditable(false);
         monday = new JLabel();
         monday.setText(" Monday ");
         monCombo = new JComboBox();
+        monCombo.addItem(food.getMonday().getFood());
         monCombo.setEditable(false);
         tuesday = new JLabel();
         tuesday.setText(" Tuesday ");
         tuesCombo = new JComboBox();
+        tuesCombo.addItem(food.getTuesday().getFood());
         tuesCombo.setEditable(false);
         wednesday = new JLabel();
         wednesday.setText(" Wednesday ");
         wednesdayCombo = new JComboBox();
+        wednesdayCombo.addItem(food.getWednesday().getFood());
         wednesdayCombo.setEditable(false);
         thursday = new JLabel();
         thursday.setText(" Thursday ");
         thursCombo = new JComboBox();
+        thursCombo.addItem(food.getThursday().getFood());
         thursCombo.setEditable(false);
         applyBtn = new JButton(" Apply ");
         cancelBtn = new JButton(" Cancel ");
@@ -106,7 +123,15 @@ public class WeeklyMealPlanFormForStudent extends JFrame implements ActionListen
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == applyBtn) {
-
+            Student std = studentService.getStudent(AccountService.CurrentUsername);
+            int price = food.getPrice();
+            if (price <= std.getCredit()) {
+                std.setCredit(std.getCredit() - price);
+                studentService.updateStudent(std);
+                JOptionPane.showMessageDialog(this, "payment is done successfully");
+            } else {
+                JOptionPane.showMessageDialog(this, "please charge your credit");
+            }
         } else if (ae.getSource() == cancelBtn) {
             dispose();
         }

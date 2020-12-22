@@ -1,9 +1,18 @@
 import java.io.Serializable;
 
-public class Class  implements Serializable {
+public class Class implements Serializable {
     private Course course;
     private int capacity;
     private int timeRange;
+    private String day;
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
 
     public Course getCourse() {
         return course;
