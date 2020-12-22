@@ -41,9 +41,28 @@ public class ProfessorService implements IProfessorService {
 
     @Override
     public List<Professor> getProfessors() {
-       return null;
+        List<Professor> professors = new ArrayList<>();
+        String fileName = FileUtility.getReadableFileName(PROF_FILE_NAME_First, PROF_FILE_NAME_Second);
+        File f = new File(fileName);
+        if (f.exists()) {
+            ObjectInputStream ois = null;
+            try {
+                FileInputStream fis = new FileInputStream(fileName);
+                ois = new ObjectInputStream(fis);
+                while (true) {
+                    Professor prof = (Professor) ois.readObject();
+                    professors.add(prof);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                //end of file exception -> do nothing
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return professors;
     }
-
 
     @Override
     public void updateClass(Class cls) {
