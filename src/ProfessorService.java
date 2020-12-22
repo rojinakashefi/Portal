@@ -17,6 +17,25 @@ public class ProfessorService implements IProfessorService {
     @Override
     public List<Class> getClasses() {
         List<Class> classes = new ArrayList<>();
+        String fileName = FileUtility.getReadableFileName(CLASS_FILE_NAME_First, CLASS_FILE_NAME_Second);
+        File f = new File(fileName);
+        if (f.exists()) {
+            ObjectInputStream ois = null;
+            try {
+                FileInputStream fis = new FileInputStream(fileName);
+                ois = new ObjectInputStream(fis);
+                while (true) {
+                    Class cls = (Class) ois.readObject();
+                    classes.add(cls);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                //end of file exception -> do nothing
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
         return classes;
     }
 
@@ -83,6 +102,25 @@ public class ProfessorService implements IProfessorService {
     }
 
     public void printClasses() {
+        String fileName = FileUtility.getReadableFileName(CLASS_FILE_NAME_First, CLASS_FILE_NAME_Second);
+        File f = new File(fileName);
+        if (f.exists()) {
+            ObjectInputStream ois = null;
+            try {
+                FileInputStream fis = new FileInputStream(fileName);
+                ois = new ObjectInputStream(fis);
+                while (true) {
+                    Class cls = (Class) ois.readObject();
+                    System.out.println("Course: " + cls.getCourse().getCourseName() + " , " + "Professor: " + cls.getCourse().getProfessorName() + " , " + "timeRange: " + cls.getTimeRange() + " , " + "capcity: " + cls.getCapacity());
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                //end of file exception -> do nothing
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
