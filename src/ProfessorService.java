@@ -64,6 +64,7 @@ public class ProfessorService implements IProfessorService {
         return professors;
     }
 
+
     @Override
     public void updateClass(Class cls) {
         String readableFileName = FileUtility.getReadableFileName(CLASS_FILE_NAME_First, CLASS_FILE_NAME_Second);
@@ -109,6 +110,7 @@ public class ProfessorService implements IProfessorService {
             }
         }
     }
+
     @Override
     public void remove(Class cls) {
         String readableFileName = FileUtility.getReadableFileName(CLASS_FILE_NAME_First, CLASS_FILE_NAME_Second);
@@ -152,7 +154,6 @@ public class ProfessorService implements IProfessorService {
             }
         }
     }
-
 
     @Override
     public void addProfessor(Professor professor) {
