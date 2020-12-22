@@ -3,22 +3,24 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class AddClassTimeForm extends JFrame implements ActionListener {
     private JPanel panel;
-    private JLabel classNameLabel,capacityLabel,timeLabel;
-    private JTextField classNameText;
+    private JLabel classNameLabel, capacityLabel, timeLabel;
+    private JComboBox classNameCombo;
     private JTextField capacityText;
     private JComboBox timeRangeCombo;
     private JButton applyBtn, cancelBtn;
     private IProfessorService professorService;
+    private List<Course> courses;
+
 
     AddClassTimeForm() {
         professorService = new ProfessorService();
         classNameLabel = new JLabel();
         classNameLabel.setText(" Course Name ");
-        classNameText = new JTextField();
-        classNameText.setHorizontalAlignment(SwingConstants.CENTER);
+        classNameCombo = new JComboBox();
         capacityLabel = new JLabel();
         capacityLabel.setText(" Capacity ");
         capacityText = new JTextField();
@@ -37,7 +39,7 @@ public class AddClassTimeForm extends JFrame implements ActionListener {
         panel = new JPanel(gridLayout);
         panel.setBorder(new EmptyBorder(10, 10, 10, 10));
         panel.add(classNameLabel);
-        panel.add(classNameText);
+        panel.add(classNameCombo);
         panel.add(capacityLabel);
         panel.add(capacityText);
         panel.add(timeLabel);
@@ -50,7 +52,7 @@ public class AddClassTimeForm extends JFrame implements ActionListener {
         applyBtn.addActionListener(this);
         cancelBtn.addActionListener(this);
         add(panel, BorderLayout.CENTER);
-        setTitle("ADD PROFESSOR");
+        setTitle("ADD CLASS");
         setSize(450, 250);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
