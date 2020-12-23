@@ -9,4 +9,11 @@ public interface IAccountService {
 
     boolean changeUsername(String oldUsername, String newPassword);
     boolean changePassword(String username, String password);
+
+    boolean isValidPassword(String pass);
+
+    boolean isDuplicateUsername(String username);
+
+    void addUser(String username, String password, UserRole role);
+    void printUsers();
 }
