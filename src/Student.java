@@ -74,6 +74,7 @@ public class Student implements Serializable {
     }
 
     public boolean isRemainUnits(int unit) {
+
         double avg = getAvergae();
         int currentUnits = getUnits();
         if (avg >= 17) {
