@@ -54,12 +54,16 @@ public class ChangeUsernameForm extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == applyBtn) {
             newUsername = newUsernameText.getText().trim();
-            boolean isChanged = accountService.changeUsername(oldUsername, newUsername);
-            if (isChanged) {
-                JOptionPane.showMessageDialog(this, "username is successfully changed, Please sign in again");
-                dispose();
+            if (accountService.isDuplicateUsername(newUsername)) {
+                JOptionPane.showMessageDialog(this, "username is duplicated");
             } else {
-                JOptionPane.showMessageDialog(this, "username is not changed, please try again");
+                boolean isChanged = accountService.changeUsername(oldUsername, newUsername);
+                if (isChanged) {
+                    JOptionPane.showMessageDialog(this, "username is successfully changed, Please sign in again");
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "username is not changed, please try again");
+                }
             }
         } else if (ae.getSource() == cancelBtn) {
             dispose();

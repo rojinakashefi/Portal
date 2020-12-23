@@ -7,10 +7,11 @@ import java.util.List;
 
 public class AddClassTimeForm extends JFrame implements ActionListener {
     private JPanel panel;
-    private JLabel classNameLabel, capacityLabel, timeLabel;
+    private JLabel classNameLabel, capacityLabel, timeLabel, dayLabel;
     private JComboBox classNameCombo;
     private JTextField capacityText;
     private JComboBox timeRangeCombo;
+    private JComboBox dayCombo;
     private JButton applyBtn, cancelBtn;
     private IProfessorService professorService;
     private List<Course> courses;
@@ -29,22 +30,33 @@ public class AddClassTimeForm extends JFrame implements ActionListener {
         timeLabel = new JLabel();
         timeLabel.setText(" Time Range ");
         timeRangeCombo = new JComboBox();
+        dayLabel = new JLabel();
+        dayLabel.setText(" Day ");
+        dayCombo = new JComboBox();
+        dayCombo.addItem("Saturday");
+        dayCombo.addItem("Sunday");
+        dayCombo.addItem("Monday");
+        dayCombo.addItem("Tuesday");
+        dayCombo.addItem("Wednesday");
+        dayCombo.addItem("Thursday");
         timeRangeCombo.addItem("8-10");
         timeRangeCombo.addItem("10-12");
         timeRangeCombo.addItem("14-16");
         capacityText.setHorizontalAlignment(SwingConstants.CENTER);
         applyBtn = new JButton(" Apply ");
         cancelBtn = new JButton(" Cancel ");
-        GridLayout gridLayout = new GridLayout(5, 2);
+        GridLayout gridLayout = new GridLayout(6, 2);
         gridLayout.setVgap(10);
         panel = new JPanel(gridLayout);
         panel.setBorder(new EmptyBorder(10, 10, 10, 10));
         panel.add(classNameLabel);
         panel.add(classNameCombo);
-        panel.add(capacityLabel);
-        panel.add(capacityText);
+        panel.add(dayLabel);
+        panel.add(dayCombo);
         panel.add(timeLabel);
         panel.add(timeRangeCombo);
+        panel.add(capacityLabel);
+        panel.add(capacityText);
         panel.add(new JLabel());
         panel.add(applyBtn);
         panel.add(new JLabel());
@@ -78,14 +90,14 @@ public class AddClassTimeForm extends JFrame implements ActionListener {
             } else {
                 Class cls = new Class();
                 Course crs = getCourse((String) classNameCombo.getSelectedItem());
-                if (crs == null)
-                {
+                if (crs == null) {
                     JOptionPane.showMessageDialog(this, "Course is not exit");
                     return;
                 }
                 cls.setCourse(crs);
+                cls.setDay((String) dayCombo.getSelectedItem());
                 cls.setTimeRange(timeRangeCombo.getSelectedIndex());
-                if (professorService.isConflict(cls)){
+                if (professorService.isConflict(cls)) {
                     JOptionPane.showMessageDialog(this, "duplicate class");
                     return;
                 }

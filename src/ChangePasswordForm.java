@@ -62,16 +62,20 @@ public class ChangePasswordForm extends JFrame implements ActionListener {
             String pass = newPassword.getText().trim();
             String confirm = confirmPassword.getText().trim();
             boolean isConfirm = pass.equalsIgnoreCase(confirm);
-            if (isConfirm) {
-                boolean isChanged = accountService.changePassword(currentUsername, newPassword.getText().trim());
-                if (isChanged) {
-                    JOptionPane.showMessageDialog(this, "password is successfully changed");
-                    dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "password is not changed, please try again");
-                }
+            if (!accountService.isValidPassword(pass)) {
+                JOptionPane.showMessageDialog(this, "Password must be at least 8 characters");
             } else {
-                JOptionPane.showMessageDialog(this, "confirm password is incorrect");
+                if (isConfirm) {
+                    boolean isChanged = accountService.changePassword(currentUsername, newPassword.getText().trim());
+                    if (isChanged) {
+                        JOptionPane.showMessageDialog(this, "password is successfully changed");
+                        dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "password is not changed, please try again");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "confirm password is incorrect");
+                }
             }
         } else if (ae.getSource() == cancelBtn) {
             dispose();
