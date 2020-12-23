@@ -8,7 +8,6 @@ enum UserRole{
 
 public class User implements Serializable {
 
-    private long Id;
     private String username;
     private String password;
     private UserRole userRole;
@@ -41,14 +40,6 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public long getId() {
-        return Id;
-    }
-
-    public void setId(long id) {
-        Id = id;
     }
 
     public UserRole getUserRole() {

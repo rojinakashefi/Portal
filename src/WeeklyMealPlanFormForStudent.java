@@ -14,7 +14,6 @@ public class WeeklyMealPlanFormForStudent extends JFrame implements ActionListen
     private JComboBox tuesCombo;
     private JComboBox wednesdayCombo;
     private JComboBox thursCombo;
-
     private JButton applyBtn, cancelBtn;
     private IFoodService foodService;
     private IStudentService studentService;
@@ -25,22 +24,22 @@ public class WeeklyMealPlanFormForStudent extends JFrame implements ActionListen
         studentService = new StudentService();
         food = foodService.getFoods();
         saturdayPrice = new JTextField();
-        saturdayPrice.setText(food.getSaturdayday().getPrice());
+        saturdayPrice.setText(String.valueOf(food.getSaturdayday().getPrice()));
         saturdayPrice.setEditable(false);
         sundayPrice = new JTextField();
-        sundayPrice.setText(food.getSunday().getPrice());
+        sundayPrice.setText(String.valueOf(food.getSunday().getPrice()));
         sundayPrice.setEditable(false);
         mondayPrice = new JTextField();
-        mondayPrice.setText(food.getMonday().getPrice());
+        mondayPrice.setText(String.valueOf(food.getMonday().getPrice()));
         mondayPrice.setEditable(false);
         tuesdayPrice = new JTextField();
-        tuesdayPrice.setText(food.getTuesday().getPrice());
+        tuesdayPrice.setText(String.valueOf(food.getTuesday().getPrice()));
         tuesdayPrice.setEditable(false);
         wednesdayPrice = new JTextField();
-        wednesdayPrice.setText(food.getWednesday().getPrice());
+        wednesdayPrice.setText(String.valueOf(food.getWednesday().getPrice()));
         wednesdayPrice.setEditable(false);
         thursdayPrice = new JTextField();
-        thursdayPrice.setText(food.getThursday().getPrice());
+        thursdayPrice.setText(String.valueOf(food.getThursday().getPrice()));
         thursdayPrice.setEditable(false);
         saturdayPrice.setHorizontalAlignment(SwingConstants.CENTER);
         sundayPrice.setHorizontalAlignment(SwingConstants.CENTER);

@@ -8,11 +8,17 @@ public interface IProfessorService {
 
     List<Course> getCourses();
     List<Class> getClasses();
+
     boolean isConflict(Class cls);
+
     void addProfessor(Professor professor);
     void addClass(Class cls);
+
     void printClasses();
+
     List<Professor> getProfessors();
+
     void updateClass(Class selectedClass);
+
     void remove(Class selectedClass);
 }

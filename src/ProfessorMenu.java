@@ -7,9 +7,11 @@ public class ProfessorMenu extends Menu {
     private JButton allStudentsBtn;
     private JButton classStudentsInfoBtn;
     private JButton gradinBtn;
+    private JButton closeBtn;
+
 
     ProfessorMenu(String username) {
-        super(username, "Professor Menu", 7, 400);
+        super(username, "Professor Menu", 8, 440);
         addClassTimeBtn = new JButton("Add Class");
         addClassTimeBtn.addActionListener(this);
         allStudentsBtn = new JButton("All Students");
@@ -18,10 +20,13 @@ public class ProfessorMenu extends Menu {
         classStudentsInfoBtn.addActionListener(this);
         gradinBtn = new JButton("Grading to Student");
         gradinBtn.addActionListener(this);
+        closeBtn = new JButton("Close a Class");
+        closeBtn.addActionListener(this);
         this.panel.add(addClassTimeBtn);
         this.panel.add(allStudentsBtn);
         this.panel.add(classStudentsInfoBtn);
         this.panel.add(gradinBtn);
+        this.panel.add(closeBtn);
     }
 
     @Override
@@ -41,6 +46,8 @@ public class ProfessorMenu extends Menu {
             new ClassStudentsInfo();
         } else if (e.getSource() == gradinBtn) {
             new GradingForm();
+        }else if (e.getSource() == closeBtn) {
+            new CloseClass();
         }
     }
 }

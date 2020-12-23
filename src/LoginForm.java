@@ -65,10 +65,6 @@ public class LoginForm extends JFrame implements ActionListener {
                     menu = new ProfessorMenu(userName);
                     dispose();
                 } else if (user.getUserRole() == UserRole.Student) {
-                    Student student = studentService.getStudent(user.getUsername());
-                    if (student == null) {
-                        studentService.addStudent(new Student(user.getUsername(), 0));
-                    }
                     menu = new StudentMenu(userName);
                     dispose();
                 }

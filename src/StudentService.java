@@ -134,6 +134,7 @@ public class StudentService implements IStudentService {
                         std.setlName(student.getlName());
                         std.setCredit(student.getCredit());
                         std.setUserName(student.getUserName());
+                        std.setClasses(student.getClasses());
                         isChanged = true;
                     }
                     oos.writeObject(std);
