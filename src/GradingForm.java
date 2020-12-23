@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * gui form for grading which professor use it
+ * @author kashefi
+ * @version 0.0
+ */
 public class GradingForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel label, courseLabel, gradeLabel;

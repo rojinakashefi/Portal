@@ -2,7 +2,16 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * handeling students service like adding students
+ * @author kashefi
+ *  @version 0.0
+ */
 public class StudentService implements IStudentService {
+    /**
+     * adding students using file
+     * @param std
+     */
     @Override
     public void addStudent(Student std) {
         String readableFileName = FileUtility.getReadableFileName(STUDENT_FILE_NAME_First, STUDENT_FILE_NAME_Second);
@@ -52,6 +61,11 @@ public class StudentService implements IStudentService {
         }
     }
 
+    /**
+     * getting students using their username
+     * @param username
+     * @return
+     */
     @Override
     public Student getStudent(String username) {
         List<Student> students = getStudents();
@@ -63,7 +77,9 @@ public class StudentService implements IStudentService {
         return null;
     }
 
-
+    /**
+     * printing students
+     */
     @Override
     public void printStudents() {
         String fileName = FileUtility.getReadableFileName(STUDENT_FILE_NAME_First, STUDENT_FILE_NAME_Second);
@@ -87,6 +103,10 @@ public class StudentService implements IStudentService {
         }
     }
 
+    /**
+     * getting list of students using reading from file
+     * @return
+     */
     @Override
     public List<Student> getStudents() {
         List<Student> students = new ArrayList<>();
@@ -112,6 +132,11 @@ public class StudentService implements IStudentService {
         return students;
     }
 
+    /**
+     * updating students
+     * @param student
+     * @return
+     */
     @Override
     public boolean updateStudent(Student student) {
         boolean isChanged = false;

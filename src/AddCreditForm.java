@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * gui form for add credit form
+ * @author kashefi
+ * @version 0.
+ */
 public class AddCreditForm extends JFrame implements ActionListener {
     JPanel panel;
     JLabel currentCreditLabel, amountOfIncrementLabel, message;

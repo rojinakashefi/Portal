@@ -3,6 +3,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * gui form for login form
+ * @author kashefi
+ * @version 0.0
+ */
 public class LoginForm extends JFrame implements ActionListener {
     private AccountService accountService;
     JPanel panel;
@@ -50,6 +55,10 @@ public class LoginForm extends JFrame implements ActionListener {
         Menu menu = showMenuByUserRole();
     }
 
+    /**
+     * showing specific menu based on role of user
+     * @return
+     */
     private Menu showMenuByUserRole() {
         try {
             String userName = userNameText.getText();

@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * gui form for student it contains adding credit, ...
+ * @author kashefi
+ * @version 0.0
+ */
 public class StudentMenu extends Menu {
     private JButton addCreditBtn;
     private JButton weeklyMealBtn;

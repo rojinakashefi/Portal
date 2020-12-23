@@ -2,6 +2,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * this class handles student service and professor services such as professor service and student service
+ * @author kashefi
+ * @version 0.0
+ */
 public class AccountService implements IAccountService {
     private StudentService studentService;
     private ProfessorService professorService;
@@ -12,6 +17,11 @@ public class AccountService implements IAccountService {
         professorService = new ProfessorService();
     }
 
+    /**
+     * there is two files which stores information, in file utility we check which one is newer then
+     * we start reading from new file and store the users in results arrayList
+     * @return list of users
+     */
     private List<User> getAllUsers() {
         List<User> results = new ArrayList<User>();
         String fileName = FileUtility.getReadableFileName(ACCOUNT_FILE_NAME_First, ACCOUNT_FILE_NAME_Second);
@@ -37,6 +47,9 @@ public class AccountService implements IAccountService {
         return results;
     }
 
+    /**
+     * create admin in file
+     */
     private void createUsers() {
         try {
             String fileName = FileUtility.getWritableFileName(ACCOUNT_FILE_NAME_First, ACCOUNT_FILE_NAME_Second);
@@ -50,6 +63,12 @@ public class AccountService implements IAccountService {
         }
     }
 
+    /**
+     * getting specific user
+     * @param username as the user we want to get
+     * @param password of the user
+     * @return user
+     */
     public User getUser(String username, String password) {
         List<User> users = getAllUsers();
         for (int i = 0; i < users.size(); i++) {
@@ -64,6 +83,11 @@ public class AccountService implements IAccountService {
         return null;
     }
 
+    /**
+     * check if admin is correct
+     * @param username
+     * @param password
+     */
     private boolean isAdminUser(String username, String password) {
         if (username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("12345678")) {
             return true;
@@ -71,6 +95,11 @@ public class AccountService implements IAccountService {
         return false;
     }
 
+    /**
+     * getting user base on their username
+     * @param username
+     * @return
+     */
     @Override
     public User getUser(String username) {
         List<User> users = getAllUsers();
@@ -82,6 +111,13 @@ public class AccountService implements IAccountService {
         return null;
     }
 
+    /**
+     * adding user
+     * check if file exists or not; if not create file
+     * @param username
+     * @param password
+     * @param role
+     */
     @Override
     public void addUser(String username, String password, UserRole role) {
         String readableFileName = FileUtility.getReadableFileName(ACCOUNT_FILE_NAME_First, ACCOUNT_FILE_NAME_Second);
@@ -131,6 +167,7 @@ public class AccountService implements IAccountService {
             }
         }
 
+        // add new user
         if (role == UserRole.Student) {
             studentService.addStudent(new Student(username, 0));
         } else if (role == UserRole.Professor) {
@@ -138,6 +175,12 @@ public class AccountService implements IAccountService {
         }
     }
 
+    /**
+     * changing username
+     * @param oldUsername
+     * @param newUsername
+     * @return if it has changed or not
+     */
     public boolean changeUsername(String oldUsername, String newUsername) {
         boolean isChanged = false;
         String readableFileName = FileUtility.getReadableFileName(ACCOUNT_FILE_NAME_First, ACCOUNT_FILE_NAME_Second);
@@ -180,6 +223,13 @@ public class AccountService implements IAccountService {
         return isChanged;
     }
 
+
+    /**
+     * changing password
+     * @param username
+     * @param newPassword
+     * @return if it has changed or not
+     */
     @Override
     public boolean changePassword(String username, String newPassword) {
         boolean isChanged = false;
@@ -223,6 +273,11 @@ public class AccountService implements IAccountService {
         return isChanged;
     }
 
+    /**
+     * checking password length
+     * @param pass
+     * @return
+     */
     @Override
     public boolean isValidPassword(String pass) {
         if (pass.length() < 8) {
@@ -231,6 +286,11 @@ public class AccountService implements IAccountService {
         return true;
     }
 
+    /**
+     * check if there is duplicate username or not
+     * @param username
+     * @return
+     */
     @Override
     public boolean isDuplicateUsername(String username) {
         List<User> users = getAllUsers();
@@ -250,6 +310,9 @@ public class AccountService implements IAccountService {
         CurrentUsername = currentUsername;
     }
 
+    /**
+     * printing users information
+     */
     @Override
     public void printUsers() {
         String fileName = FileUtility.getReadableFileName(ACCOUNT_FILE_NAME_First, ACCOUNT_FILE_NAME_Second);
@@ -273,5 +336,6 @@ public class AccountService implements IAccountService {
         }
     }
 
+    //creating admin sample
     public static User AdminUserSample = new User("admin", "12345678", UserRole.Admin);
 }

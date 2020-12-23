@@ -6,6 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * gui for students form like username,password,...
+ * @author kashefi
+ *  @version 0.0
+ */
 public class StudentsForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JTable studentsTable;

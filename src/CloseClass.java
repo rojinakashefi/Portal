@@ -5,6 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * gui for closing class
+ * @author kashefi
+ * @version 0.0
+ */
 public class CloseClass extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel selectLabel;

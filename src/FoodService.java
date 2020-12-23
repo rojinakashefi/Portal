@@ -1,8 +1,17 @@
 import java.io.*;
 import java.util.List;
 
+/**
+ * handling food services like get foods, print foods
+ * @author kashefi
+ * @version 0.0
+ */
 public class FoodService implements IFoodService {
 
+    /**
+     * write meal to file
+     * @param food
+     */
     @Override
     public void addWeaklyMealPlan(Food food) {
         try {
@@ -17,6 +26,10 @@ public class FoodService implements IFoodService {
         }
     }
 
+    /**
+     * getting foods from file
+     * @return
+     */
     @Override
     public Food getFoods() {
         Food food = null;
@@ -39,6 +52,9 @@ public class FoodService implements IFoodService {
         return food;
     }
 
+    /**
+     * print foods information
+     */
     @Override
     public void prindFoods() {
         String fileName = FOOD_FILE_NAME_First;

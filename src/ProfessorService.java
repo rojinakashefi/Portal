@@ -2,6 +2,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  handling professor services like getting classes,update class,..
+ *  @author kashefi
+ *  @version 0.0
+ */
 public class ProfessorService implements IProfessorService {
     ICourseService courseService;
 

@@ -1,3 +1,5 @@
+import com.sun.media.sound.InvalidFormatException;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -5,6 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 
+/**
+ * gui form for meal for admin
+ * @author kashefi
+ * @version 0.0
+ */
 public class WeeklyMealPlanFormForAdmin extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel saturday, sunday, monday, tuesday, wednesday, thursday;
@@ -156,10 +163,18 @@ public class WeeklyMealPlanFormForAdmin extends JFrame implements ActionListener
         }
     }
 
+    /**
+     * getting items
+     * @return
+     */
     private String[] getItems() {
         return new String[]{"Fries and Chicken", "Piza", "Pasta", "Hamburger", "Nuggets and Fries", "Tomato Soup"};
     }
 
+    /**
+     * checking select different foods
+     * @return
+     */
     private boolean isDifferentCombos() {
         int satSelectedIndex = satCombo.getSelectedIndex();
         int sunSelectedIndex = sunCombo.getSelectedIndex();

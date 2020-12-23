@@ -2,8 +2,17 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * handling course services like add course, get course, ...
+ * @author kashefi
+ * @version 0.0
+ */
 public class CourseService implements ICourseService {
-
+    /**
+     * check if file exists or not, is exists write in file
+     * add new course to file
+     * @param course
+     */
     @Override
     public void addCourse(Course course) {
         String readableFileName = FileUtility.getReadableFileName(COURSE_FILE_NAME_First, COURSE_FILE_NAME_Second);
@@ -53,6 +62,11 @@ public class CourseService implements ICourseService {
         }
     }
 
+    /**
+     * there is two files which stores information, in file utility we check which one is newer then
+     * we start reading from new file and get courses
+     * @return list of courses
+     */
     @Override
     public List<Course> getAllCourses() {
         List<Course> courses = new ArrayList<>();
@@ -78,6 +92,9 @@ public class CourseService implements ICourseService {
         return courses;
     }
 
+    /**
+     * print all courses
+     */
     @Override
     public void printCourses() {
         String fileName = FileUtility.getReadableFileName(COURSE_FILE_NAME_First, COURSE_FILE_NAME_Second);

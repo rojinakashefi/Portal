@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * gui for adding student form
+ * @author kashefi
+ * @version 0.0
+ */
 public class AddStudentForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel label, PassLabel;

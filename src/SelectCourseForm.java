@@ -5,6 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * gui for selecting course from available course
+ *  @author kashefi
+ *  @version 0.0
+ */
 public class SelectCourseForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel selectLabel;

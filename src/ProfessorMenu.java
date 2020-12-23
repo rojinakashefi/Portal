@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-
+/**
+ * menu for professor it contains add class, all student, ...
+ *  @author kashefi
+ *  @version 0.0
+ *
+ */
 public class ProfessorMenu extends Menu {
 
     private JButton addClassTimeBtn;

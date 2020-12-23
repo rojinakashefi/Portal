@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * gui form for payment form
+ * @author kashefi
+ * @version 0.0
+ */
 public class PaymentForm extends JFrame implements ActionListener {
     JPanel panel;
     JLabel cardLabel, pinLabel, message;

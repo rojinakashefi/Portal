@@ -3,6 +3,11 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * creating parents class for menu which contains edit username, password and sign out
+ * @author kashefi
+ * @version 0.0
+ */
 public abstract class Menu extends JFrame implements ActionListener {
     protected JPanel panel;
     protected JButton changeUsernameBtn;

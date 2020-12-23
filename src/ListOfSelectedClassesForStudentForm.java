@@ -6,6 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * gui form for list of classes in specific students
+ * @author kashefi
+ * @version 0.0
+ */
 public class ListOfSelectedClassesForStudentForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JTable studentsTable;
@@ -41,6 +46,9 @@ public class ListOfSelectedClassesForStudentForm extends JFrame implements Actio
         setVisible(true);
     }
 
+    /**
+     * making list of selected class for each student
+     */
     private void setListOfSelectedClasses() {
         Student student = studentService.getStudent(AccountService.CurrentUsername);
         for (int i = 0; i < student.getClasses().size(); i++) {
@@ -54,6 +62,11 @@ public class ListOfSelectedClassesForStudentForm extends JFrame implements Actio
         }
     }
 
+    /**
+     * getting time range of each class
+     * @param timeRange
+     * @return
+     */
     private String getTimeRange(int timeRange) {
         switch (timeRange) {
             case 0:

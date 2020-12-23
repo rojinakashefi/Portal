@@ -6,6 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * gui for classes form available
+ * @author kashefi
+ * @version 0.0
+ */
 public class ClassesForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JTable studentsTable;

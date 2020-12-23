@@ -5,6 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * gui form for add professor class form
+ * @author kashefi
+ * @version 0.0
+ */
 public class AddProfessorClassForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel label, CourseNameLabel, unit;

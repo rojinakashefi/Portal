@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * gui form for meal for student
+ * @author kashefi
+ * @version 0.0
+ */
 public class WeeklyMealPlanFormForStudent extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel saturday, sunday, monday, tuesday, wednesday, thursday;

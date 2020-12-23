@@ -2,7 +2,11 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
+/**
+ * gui for changing username form
+ * @author kashefi
+ * @version 0.0
+ */
 public class ChangeUsernameForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel userLabel, PassLabel, message;

@@ -5,6 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+
+/**
+ * gui for add class time form
+ * @author kashefi
+ * @version 0.0
+ */
+
 public class AddClassTimeForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel classNameLabel, capacityLabel, timeLabel, dayLabel;
@@ -72,6 +79,9 @@ public class AddClassTimeForm extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    /**
+     * setting class name for professor classes
+     */
     private void setClassNames() {
         courses = professorService.getCourses();
         for (int i = 0; i < courses.size(); i++) {
@@ -112,7 +122,11 @@ public class AddClassTimeForm extends JFrame implements ActionListener {
 
     }
 
-
+    /**
+     * getting course
+     * @param name
+     * @return Course base on their name
+     */
     private Course getCourse(String name) {
         for (int i = 0; i < courses.size(); i++) {
             if (courses.get(i).getCourseName().equalsIgnoreCase(name)) {

@@ -6,6 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * gui form for professor information form
+ * @author kashefi
+ * @version 0.0
+ */
 public class ProfessorInfoForm extends JFrame implements ActionListener {
     private JPanel panel, selectPanel;
     private JLabel label;

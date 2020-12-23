@@ -2,7 +2,11 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
+/**
+ * gui for adding change password form
+ * @author kashefi
+ * @version 0.0
+ */
 public class ChangePasswordForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel userLabel, PassLabel, confirmPassLabel, message;

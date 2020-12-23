@@ -6,6 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * gui form for professor form like username,first password,lastname,...
+ *  @author kashefi
+ *  @version 0.0
+ */
 public class ProfessorsForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JTable studentsTable;
@@ -41,6 +46,9 @@ public class ProfessorsForm extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    /**
+     * setting list of students of professor
+     */
     private void setListOfStudents() {
         List<Professor> professors = professorService.getProfessors();
         for (int i = 0; i < professors.size(); i++) {
