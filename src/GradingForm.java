@@ -7,12 +7,12 @@ import java.awt.event.ActionListener;
 public class GradingForm extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel label, courseLabel, gradeLabel;
-    private JTextField studentIdText,courseNameText,GradeText;
+    private JTextField studentIdText, courseNameText, GradeText;
     private JButton applyBtn, cancelBtn;
-    private IProfessorService professorService;
+    private IStudentService studentService;
 
     GradingForm() {
-        professorService = new ProfessorService();
+        studentService = new StudentService();
         label = new JLabel();
         label.setText(" Student Id ");
         studentIdText = new JTextField();
@@ -54,8 +54,29 @@ public class GradingForm extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == applyBtn){
-        }else if (ae.getSource() == cancelBtn){
+        if (ae.getSource() == applyBtn) {
+            String courseName = courseNameText.getText().trim();
+            String usernme = studentIdText.getText().trim();
+            String grade = GradeText.getText().trim();
+            Student student = studentService.getStudent(usernme);
+            if (student != null) {
+                Class cls = student.getSelectedClassByCourseName(courseName);
+                if (cls != null) {
+                    try {
+                        cls.getCourse().setGrade(Double.parseDouble(grade));
+                        student.update(cls);
+                        studentService.updateStudent(student);
+                        JOptionPane.showMessageDialog(this, "Grade successfully is added");
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(this, "Exception invalid data");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Course does not exist");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "User Does not exist");
+            }
+        } else if (ae.getSource() == cancelBtn) {
             dispose();
         }
     }

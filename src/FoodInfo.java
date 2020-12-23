@@ -2,9 +2,9 @@ import java.io.Serializable;
 
 public class FoodInfo implements Serializable {
     private String food;
-    private String price;
+    private int price;
 
-    public FoodInfo(String food, String price) {
+    public FoodInfo(String food, int price) {
         this.food = food;
         this.price = price;
     }
@@ -17,11 +17,11 @@ public class FoodInfo implements Serializable {
         this.food = food;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 }

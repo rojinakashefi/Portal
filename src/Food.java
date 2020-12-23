@@ -57,12 +57,8 @@ public class Food implements Serializable {
     }
 
     public int getPrice() {
-        return Integer.parseInt(getSaturdayday().getPrice()) +
-                Integer.parseInt(getSunday().getPrice()) +
-                Integer.parseInt(getMonday().getPrice()) +
-                Integer.parseInt(getThursday().getPrice()) +
-                Integer.parseInt(getTuesday().getPrice()) +
-                Integer.parseInt(getWednesday().getPrice());
+        return getSaturdayday().getPrice() + getSunday().getPrice() + getMonday().getPrice()
+                + getThursday().getPrice() + getTuesday().getPrice() + getWednesday().getPrice();
     }
 }
 
