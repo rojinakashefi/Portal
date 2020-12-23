@@ -3,6 +3,25 @@ import java.io.Serializable;
 public class Course implements Serializable {
     private String courseName;
     private String professorName;
+    private int unit;
+
+    private double grade;
+
+    public int getUnit() {
+        return unit;
+    }
+
+    public void setUnit(int unit) {
+        this.unit = unit;
+    }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    public void setGrade(double grade) {
+        this.grade = grade;
+    }
 
     public Course(String courseName, String professorName) {
         this.courseName = courseName;
