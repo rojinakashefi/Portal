@@ -1,4 +1,4 @@
-#Portal
+# Portal
 
 This project is about creating an online site for university works,which three type of people can use it Admin, Professors,Students.
 
@@ -59,7 +59,9 @@ Each user has it own responsiblities and all of them will be stored in files:
 
 6. Can see list of selected classes.
 
-#### Help
+   ------
+
+   #### Help
 
 you can run this program in terminal using these instructions:
 
@@ -71,6 +73,8 @@ java -cp out/production/Portal Main
 
 if you have compiler error open IntelliJ (Intellij IDEA->preferences->Build,Execution,Deployment->compiler->Java compiler->Project bytecode version->**15**).
 
-##### Author
+------
+
+##### Author:
 
 Rojina kashefi
